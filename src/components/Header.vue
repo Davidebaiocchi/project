@@ -39,7 +39,7 @@ export default {
     background-color: #0d0d0d;
     height: 80px;
     padding: 0 20px;
-    z-index: 1;
+    z-index: 2;
     .left-section{
       color: red;
       font-size: 25px;

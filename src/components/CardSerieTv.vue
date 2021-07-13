@@ -40,8 +40,9 @@ export default {
     width: 300px;
     margin-right: 10px;
     height: 500px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     position: relative;
+    cursor: pointer;
   }
   img {
     height: 15px;
@@ -59,8 +60,16 @@ export default {
     // bottom: 280px;
     // left: 80px;
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+  }
+  .card:hover .description {
     z-index: 1;
+    background-color: rgba(0, 0, 0, 0.911);
+    height: 100%;
+    width: 100%;
   }
 </style> 

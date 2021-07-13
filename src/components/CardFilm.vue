@@ -1,5 +1,8 @@
 <template>
   <div class="card">
+    <div class="cover">
+      <img :src="imgBaseURL + imgBaseDimension + film.backdrop_path" :alt="'Copertina ' + film.title">
+    </div>
     Titolo = {{film.title}} <br>
     Titolo originale = {{film.original_title}} <br>
     Lingua = <img :src="getImgUrl(language)" v-bind:alt="language"> <br>
@@ -9,8 +12,8 @@
 
 <script>
 export default {
-  name : 'Card',
-  props : ['film'],
+  name : 'CardFilm',
+  props : ['film','imgBaseURL','imgBaseDimension'],
   data(){
     return {
       language: this.film.original_language
@@ -22,7 +25,7 @@ export default {
         let fileName = require('../assets/img/' + pic + '.png');
         return fileName
       } 
-      catch (i) {
+      catch (none) {
         return 'none'
       }  
     }
@@ -32,10 +35,7 @@ export default {
 
 <style lang="scss">
   .card{
-    width: calc(100% / 9);
-    background-color: rgb(34, 0, 128);
-    border: 1px solid rgb(255, 255, 255);
-    padding: 20px;
+    width: 380.987px;
     height: 300px;
     margin-right: 5px;
     margin-bottom: 40px;
@@ -43,4 +43,10 @@ export default {
   img {
     height: 15px;
   }
+  .cover{
+      img{
+        height: 380px;
+        width: 345.987px;
+      }
+    }
 </style>

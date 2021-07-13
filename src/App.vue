@@ -1,9 +1,15 @@
 <template>
   <div id="app">
-    <Header @startTest="searchFilm"/>
-    <Main :filmArray="filmArray" :searchText="searchText"/>
+    <Header @startTest="searchInAPI"/>
+    <Main 
+    :filmArray="filmArray" 
+    :serieArray="serieArray" 
+    :imgBaseURL="imgBaseURL" 
+    :imgBaseDimension="imgBaseDimension"
+    :searchText="searchText"/>
   </div>
 </template>
+
 
 <script>
 import Header from './components/Header.vue';
@@ -17,22 +23,31 @@ export default {
   },
   data(){
     return{
-      apiURL : 'https://api.themoviedb.org/3/search/movie?',
+      apiURLFilm : 'https://api.themoviedb.org/3/search/movie?',
       apiURLSerie : 'https://api.themoviedb.org/3/search/tv?',
       filmArray : [],
+      serieArray : [],
+      imgBaseURL : 'https://image.tmdb.org/t/p/',
+      imgBaseDimension : 'original',
       searchText : ''
     }
+    
   },
   methods : {
-    searchFilm(inputText){
-      // save user search text
-      this.searchText = inputText;
-      // call films API
+    searchInAPI(inputText){
+      this.searchFilm(inputText);
+      this.searchSerie(inputText);
+    },
+
+    searchFilm(searchText){
+      
+      this.searchText = searchText;
+
       axios
-        .get(this.apiURL, {
+        .get(this.apiURLFilm, {
           params: {
             api_key : 'f019de624b3557ff30c3068e6b218a54',
-            query : inputText,
+            query : searchText,
             language : 'it-IT'
           }
         })
@@ -44,21 +59,22 @@ export default {
           console.log('Errore : ' + error);
         });
     },
-    searchSerie(inputText){
-      // save user search text
-      this.searchText = inputText;
-      // call serie API
+    searchSerie(searchText){
+
+      this.searchText = searchText;
+      
+
       axios
         .get(this.apiURLSerie, {
           params: {
             api_key : 'f019de624b3557ff30c3068e6b218a54',
-            query : inputText,
+            query : searchText,
             language : 'it-IT'
           }
         })
         .then(response => {
-          this.filmArray = response.data.results;
-          console.log(this.filmArray);
+          this.serieArray = response.data.results;
+          console.log(this.serieArray);
         })
         .catch((error) => {
           console.log('Errore : ' + error);

@@ -10,6 +10,7 @@
       <form action="">
         <input 
         type="text" 
+        placeholder="Cerca film o serie Tv"
         v-model.trim="srcText">
         <button @click.prevent="$emit('startTest',srcText)">Cerca</button>
       </form>
@@ -48,11 +49,20 @@ export default {
           height: 40px;
           margin-right: 20px;
           cursor: pointer;
+          background-color: red;
+          color: white;
+          border: 0;
+          padding: 0 10px;
         }
         input {
           width: 200px;
           padding-left: 10px;
           font-size: 18px;
+          background-color: #0d0d0d;
+          border: 0;
+          color: white;
+          border-bottom: 2px solid rgb(0, 76, 255);
+          text-align: center;
         }
       }
     }

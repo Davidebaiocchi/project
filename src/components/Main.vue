@@ -4,10 +4,19 @@
 
       <div class="Cards">
 
-        <Card 
-        v-for="(film,i) in filmArray"
+         <CardSerieTv 
+        v-for="(serie, i) in serieArray"
         :key="i"
-        :film="film"/>
+        :serie="serie"
+        :imgBaseURL="imgBaseURL"
+        :imgBaseDimension="imgBaseDimension"/>
+
+        <CardFilm 
+        v-for="(film, i) in filmArray"
+        :key="i"
+        :film="film"
+        :imgBaseURL="imgBaseURL"
+        :imgBaseDimension="imgBaseDimension"/>
 
       </div>
     </div>
@@ -15,13 +24,16 @@
 </template>
 
 <script>
-import Card from '@/components/Card.vue';
+import CardFilm from '@/components/CardFilm.vue';
+import CardSerieTv from '@/components/CardSerieTv.vue';
+
 export default {
   name : 'Main',
   components : {
-    Card
+    CardFilm,
+    CardSerieTv
   },
-  props : ['searchText', 'filmArray']
+  props : ['searchText', 'filmArray', 'serieArray', 'imgBaseURL', 'imgBaseDimension']
 }
 </script>
 
@@ -38,7 +50,12 @@ export default {
       display: flex;
       align-items: flex-start;
       flex-wrap: wrap;
-      padding-left: 150px;
+      padding-left: 30px;
+      width: 100%;
     }
+  }
+  .Cards {
+    justify-content: space-between;
+    display: flex;
   }
 </style>

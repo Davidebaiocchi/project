@@ -4,7 +4,7 @@
 
       <div class="Cards">
 
-         <CardSerieTv 
+        <CardSerieTv 
         v-for="(serie, i) in serieArray"
         :key="i"
         :serie="serie"
@@ -48,14 +48,9 @@ export default {
     .Cards{
       margin-top: 50px;
       display: flex;
-      align-items: flex-start;
       flex-wrap: wrap;
       padding-left: 30px;
       width: 100%;
     }
-  }
-  .Cards {
-    justify-content: space-between;
-    display: flex;
   }
 </style>
